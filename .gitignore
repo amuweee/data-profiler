@@ -1,0 +1,8 @@
+.venv
+.vscode
+.vim
+.DS_store
+
+query_results/
+credentials.py
+
