@@ -27,8 +27,12 @@ def generate(query):
         cur.execute(query)
         cur.get_results_from_sfqid(cur.sfqid)
         results = cur.fetchall()
+        col_name = [i[0] for i in cur.description]
 
-    df = pd.DataFrame(results)
+    df = pd.DataFrame(
+        data=results,
+        columns=col_name
+    )
 
     profile = ProfileReport(df, title="query")
     profile.to_file(f"{fpath}/query.html")
